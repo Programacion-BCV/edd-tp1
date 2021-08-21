@@ -21,21 +21,21 @@ public class ArrayOO {
     }
 
     /**
-     * Incrementa en uno la longitud del array e inserta en la última posición
-     * el valor pasado por parámetro
+     * Incrementa en uno la longitud del array e inserta en la última posición el
+     * valor pasado por parámetro
      *
      * @param valor
      */
     public void add(int valor) {
-        //Crear nuevoArray con length = array.length + 1
+        // Crear nuevoArray con length = array.length + 1
         int[] nuevoArray = new int[array.length + 1];
-        //Copiar los valores de array en otro array nuevoArray
+        // Copiar los valores de array en otro array nuevoArray
         for (int i = 0; i < array.length; i++) {
             nuevoArray[i] = array[i];
         }
-        //Poner el nuevo valor en nuevoArray 
+        // Poner el nuevo valor en nuevoArray
         nuevoArray[nuevoArray.length - 1] = valor;
-        //Sobreescribir el valor de array
+        // Sobreescribir el valor de array
         this.array = nuevoArray;
     }
 
@@ -46,10 +46,10 @@ public class ArrayOO {
      * @param indice
      */
     public void remove(int indice) {
-        //Crear nuevoArray con length = array.length - 1
+        // Crear nuevoArray con length = array.length - 1
         int[] nuevoArray = new int[array.length - 1];
 
-        //Copiar todos los valores menos indice
+        // Copiar todos los valores menos indice
         int indiceAux = 0;
         for (int i = 0; i < array.length; i++) {
             if (i != indice) {
@@ -58,7 +58,7 @@ public class ArrayOO {
             }
         }
 
-        //Sobreescribir el array con nuevoArray
+        // Sobreescribir el array con nuevoArray
         this.array = nuevoArray;
     }
 
@@ -99,11 +99,12 @@ public class ArrayOO {
      */
     public double promedio() {
         int suma = 0;
-        double res = 0;
+        double res;
         for (int i = 0; i < array.length; i++) {
             suma += array[i];
         }
-        return res = (suma / array.length);
+        res = (suma / array.length);
+        return res;
     }
 
     public void multiplicar(int valorParam) {
