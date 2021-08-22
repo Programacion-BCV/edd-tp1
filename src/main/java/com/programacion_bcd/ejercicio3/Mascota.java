@@ -1,7 +1,5 @@
 package com.programacion_bcd.ejercicio3;
 
-import java.util.Objects;
-
 public class Mascota {
     int nroRegistro;
     String nombre;
@@ -58,19 +56,25 @@ public class Mascota {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Mascota)) {
-            return false;
-        }
-        Mascota mascota = (Mascota) o;
-        return nroRegistro == mascota.nroRegistro;
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + nroRegistro;
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(nroRegistro);
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Mascota other = (Mascota) obj;
+        if (nroRegistro != other.nroRegistro)
+            return false;
+        return true;
     }
 
     @Override

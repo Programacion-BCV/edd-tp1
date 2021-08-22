@@ -1,7 +1,5 @@
 package com.programacion_bcd.ejercicio3;
 
-import java.util.Objects;
-
 public class Persona {
     String apellido;
     String nombre;
@@ -38,28 +36,28 @@ public class Persona {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Persona other = (Persona) obj;
-        if (!Objects.equals(this.documento, other.documento)) {
-            return false;
-        }
-        return true;
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((documento == null) ? 0 : documento.hashCode());
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + Objects.hashCode(this.documento);
-        return hash;
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Persona other = (Persona) obj;
+        if (documento == null) {
+            if (other.documento != null)
+                return false;
+        } else if (!documento.equals(other.documento))
+            return false;
+        return true;
     }
 
     @Override

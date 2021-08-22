@@ -1,14 +1,24 @@
-package com.programacion_bcd.ejercicio3;
+package com.programacion_bcd.ejercicio5;
 
-public class Especie {
-    String nombre;
+public class Ciudad {
+    private int codigoIata;
+    private String nombre;
 
-    public Especie(String nombre) {
+    public Ciudad(int codigoIata, String nombre) {
+        this.codigoIata = codigoIata;
         this.nombre = nombre;
     }
 
+    public int getCodigoIata() {
+        return codigoIata;
+    }
+
+    public void setCodigoIata(int codigoIata) {
+        this.codigoIata = codigoIata;
+    }
+
     public String getNombre() {
-        return this.nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
@@ -19,7 +29,7 @@ public class Especie {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+        result = prime * result + codigoIata;
         return result;
     }
 
@@ -31,18 +41,15 @@ public class Especie {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Especie other = (Especie) obj;
-        if (nombre == null) {
-            if (other.nombre != null)
-                return false;
-        } else if (!nombre.equals(other.nombre))
+        Ciudad other = (Ciudad) obj;
+        if (codigoIata != other.codigoIata)
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "~Nombre: " + this.nombre;
+        return "~Codigo IATA: " + this.codigoIata + "\n" + "~Nombre: " + this.nombre;
     }
 
 }

@@ -1,14 +1,24 @@
-package com.programacion_bcd.ejercicio3;
+package com.programacion_bcd.ejercicio5;
 
-public class Especie {
-    String nombre;
+public class LineaAerea {
+    private int numero;
+    private String nombre;
 
-    public Especie(String nombre) {
+    public LineaAerea(int numero, String nombre) {
+        this.numero = numero;
         this.nombre = nombre;
     }
 
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
     public String getNombre() {
-        return this.nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
@@ -20,6 +30,7 @@ public class Especie {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+        result = prime * result + numero;
         return result;
     }
 
@@ -31,18 +42,20 @@ public class Especie {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Especie other = (Especie) obj;
+        LineaAerea other = (LineaAerea) obj;
         if (nombre == null) {
             if (other.nombre != null)
                 return false;
         } else if (!nombre.equals(other.nombre))
+            return false;
+        if (numero != other.numero)
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "~Nombre: " + this.nombre;
+        return "~Nombre: " + this.nombre + "\n" + "~Numero" + this.numero;
     }
 
 }
