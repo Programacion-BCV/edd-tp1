@@ -1,11 +1,10 @@
 
-package ControlAutomotris;
+package com.programacion_bcd.ejercicio4;
 
 import java.util.Objects;
 import java.math.BigDecimal;
 
 public class Automovil {
-
 
     private String Matricula;
     private Tipo tipo;
@@ -16,7 +15,6 @@ public class Automovil {
     public Automovil() {
     }
 
-    
     public Automovil(String Matricula, Tipo tipo, Marca marca, int anio) {
         this.Matricula = Matricula;
         this.tipo = tipo;
@@ -39,7 +37,6 @@ public class Automovil {
     public int getAnio() {
         return anio;
     }
-
 
     public void setMatricula(String Matricula) {
         this.Matricula = Matricula;
@@ -87,11 +84,4 @@ public class Automovil {
         return true;
     }
 
- 
-
-
-  
-    
-    
-    
 }

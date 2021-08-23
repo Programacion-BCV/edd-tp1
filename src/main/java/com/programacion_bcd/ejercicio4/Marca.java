@@ -1,8 +1,7 @@
 
-package ControlAutomotris;
+package com.programacion_bcd.ejercicio4;
 
 import java.util.Objects;
-
 
 public class Marca {
     private String nombre;
@@ -23,7 +22,6 @@ public class Marca {
     public String toString() {
         return "Marca{" + "nombre=" + nombre + '}';
     }
-
 
     public int hashCode() {
         int hash = 5;
@@ -48,6 +46,5 @@ public class Marca {
         }
         return true;
     }
-    
-    
+
 }

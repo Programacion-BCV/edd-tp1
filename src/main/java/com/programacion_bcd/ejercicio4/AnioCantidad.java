@@ -1,15 +1,14 @@
 
-package ControlAutomotris;
-
+package com.programacion_bcd.ejercicio4;
 
 public class AnioCantidad {
- private int modelo;
- private int cantidad;
+    private int modelo;
+    private int cantidad;
 
     public AnioCantidad() {
     }
 
-    public AnioCantidad(int modelo,int cantidad) {
+    public AnioCantidad(int modelo, int cantidad) {
         this.modelo = modelo;
         this.cantidad = cantidad;
     }
@@ -34,9 +33,5 @@ public class AnioCantidad {
     public String toString() {
         return "AnioCantidad{" + "modelo=" + modelo + ", cantidad=" + cantidad + '}';
     }
-    
- 
- 
- 
- 
+
 }

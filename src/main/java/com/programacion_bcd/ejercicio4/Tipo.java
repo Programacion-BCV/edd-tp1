@@ -1,5 +1,5 @@
 
-package ControlAutomotris;
+package com.programacion_bcd.ejercicio4;
 
 import java.util.Objects;
 
@@ -22,7 +22,6 @@ public class Tipo {
     public String toString() {
         return "Tipo{" + "descripcion=" + descripcion + '}';
     }
-
 
     @Override
     public int hashCode() {
@@ -48,6 +47,5 @@ public class Tipo {
         }
         return true;
     }
-    
-    
+
 }
