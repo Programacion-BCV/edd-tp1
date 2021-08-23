@@ -15,11 +15,12 @@ public class Automovil {
     public Automovil() {
     }
 
-    public Automovil(String Matricula, Tipo tipo, Marca marca, int anio) {
+    public Automovil(String Matricula, Tipo tipo, Marca marca, int anio,BigDecimal valuacion) {
         this.Matricula = Matricula;
         this.tipo = tipo;
         this.marca = marca;
         this.anio = anio;
+        this.valuacion=valuacion;
     }
 
     public String getMatricula() {
@@ -54,10 +55,21 @@ public class Automovil {
         this.anio = anio;
     }
 
+    public BigDecimal getValuacion() {
+        return valuacion;
+    }
+
+    public void setValuacion(BigDecimal valuacion) {
+        this.valuacion = valuacion;
+    }
+
     @Override
     public String toString() {
-        return "Automovil{" + "Matricula=" + Matricula + ", tipo=" + tipo + ", marca=" + marca + ", anio=" + anio + '}';
+        return "Automovil{" + "Matricula=" + Matricula + ", tipo=" + tipo + ", marca=" + marca + ", anio=" + anio + ", valuacion=" + valuacion + '}';
     }
+    
+
+    
 
     @Override
     public int hashCode() {
