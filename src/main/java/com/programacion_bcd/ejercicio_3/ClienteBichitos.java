@@ -34,29 +34,43 @@ public class ClienteBichitos {
 
     private static void imprimir(Mascota[] param) {
         for (int i = 0; i < param.length; i++) {
-            if (param[i] != null) {
-                System.out.println(param[i].toString());
-            }
+            System.out.println(param[i].toString());
         }
     }
 
     private static Mascota[] filtrarGerontes(Mascota[] param) {
-        Mascota[] mayor13 = new Mascota[param.length];
+
+        Mascota[] mayor13 = new Mascota[0];
 
         for (int i = 0; i < param.length; i++) {
             if ((2021 - param[i].anioNacimiento) > 13) {
-                mayor13[i] = param[i];
+
+                Mascota[] auxMascotas = new Mascota[mayor13.length + 1];
+
+                for (int j = 0; j < mayor13.length; j++) {
+                    auxMascotas[j] = mayor13[j];
+                }
+                mayor13 = auxMascotas;
+                mayor13[mayor13.length - 1] = param[i];
             }
         }
         return mayor13;
+
     }
 
     private static Mascota[] filtrarPorEspecie(Mascota[] param, Especie especieParam) {
-        Mascota[] retorno = new Mascota[param.length];
+        Mascota[] retorno = new Mascota[0];
 
         for (int i = 0; i < param.length; i++) {
             if (param[i].getRaza().getEspecie().equals(especieParam)) {
-                retorno[i] = param[i];
+
+                Mascota[] auxMascotas = new Mascota[retorno.length + 1];
+
+                for (int j = 0; j < retorno.length; j++) {
+                    auxMascotas[j] = retorno[j];
+                }
+                retorno = auxMascotas;
+                retorno[retorno.length - 1] = param[i];
             }
         }
         return retorno;

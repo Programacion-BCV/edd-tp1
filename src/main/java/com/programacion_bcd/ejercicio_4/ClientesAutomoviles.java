@@ -37,6 +37,7 @@ public class ClientesAutomoviles {
         System.out.println("Cantidad de vehiculos por modelos:");
 
         AnioCantidad[] retorno = cantidadPorAnio(param);
+
         for (int i = 0; i < retorno.length; i++) {
             if (retorno[i] != null) {
                 System.out.println(retorno[i].toString());
@@ -52,41 +53,50 @@ public class ClientesAutomoviles {
         TipoValuacion[] retorno1 = valuacionesPorTipo(param);
 
         for (int i = 0; i < retorno1.length; i++) {
-            if (retorno1[i] != null) {
-                System.out.println(retorno1[i].toString());
-
-            } else {
-                break;
-            }
+            System.out.println(retorno1[i].toString());
         }
 
     }
 
     private static void imprimir(Automovil[] param) {
         for (int i = 0; i < param.length; i++) {
-            if (param[i] != null) {
-                System.out.println(param[i].toString());
-            }
+            System.out.println(param[i].toString());
         }
     }
 
     private static Automovil[] filtrarPorAnio(Automovil[] param, int anio) {
-        Automovil[] retorno = new Automovil[param.length];
+        Automovil[] retorno = new Automovil[0];
 
         for (int i = 0; i < param.length; i++) {
             if (param[i].getAnio() == anio) {
-                retorno[i] = param[i];
+
+                Automovil[] auxAutomovil = new Automovil[retorno.length + 1];
+
+                for (int j = 0; j < retorno.length; j++) {
+                    auxAutomovil[j] = retorno[j];
+                }
+
+                retorno = auxAutomovil;
+                retorno[retorno.length - 1] = param[i];
+
             }
         }
         return retorno;
     }
 
     private static Automovil[] filtrarPorTipo(Automovil[] param, Tipo tipo) {
-        Automovil[] retorno = new Automovil[param.length];
+        Automovil[] retorno = new Automovil[0];
 
         for (int i = 0; i < param.length; i++) {
             if (param[i].getTipo().equals(tipo)) {
-                retorno[i] = param[i];
+                Automovil[] auxAutomovil = new Automovil[retorno.length + 1];
+
+                for (int j = 0; j < retorno.length; j++) {
+                    auxAutomovil[j] = retorno[j];
+                }
+
+                retorno = auxAutomovil;
+                retorno[retorno.length - 1] = param[i];
             }
         }
         return retorno;
@@ -95,12 +105,20 @@ public class ClientesAutomoviles {
     private static AnioCantidad[] cantidadPorAnio(Automovil[] param) {
         int j;
         boolean pusheado;
-        AnioCantidad[] retorno = new AnioCantidad[param.length];
+        AnioCantidad[] retorno = new AnioCantidad[0];
 
         for (int i = 0; i < param.length; i++) {
             pusheado = false;
             if (i == 0) {
-                retorno[i] = new AnioCantidad(param[i].getAnio(), 1);
+
+                AnioCantidad[] auxACantidad = new AnioCantidad[retorno.length + 1];
+
+                for (int x = 0; x < retorno.length; x++) {
+                    auxACantidad[x] = retorno[x];
+                }
+
+                retorno = auxACantidad;
+                retorno[retorno.length - 1] = new AnioCantidad(param[i].getAnio(), 1);
             } else {
                 j = 0;
 
@@ -112,12 +130,18 @@ public class ClientesAutomoviles {
 
                     j++;
 
-                } while (retorno[j] != null && !pusheado);
-                if (retorno[j] == null && !pusheado) {
-                    retorno[j] = new AnioCantidad(param[i].getAnio(), 1);
+                } while (j < retorno.length && !pusheado);
+                if (j == retorno.length && !pusheado) {
+                    AnioCantidad[] auxACantidad = new AnioCantidad[retorno.length + 1];
+
+                    for (int x = 0; x < retorno.length; x++) {
+                        auxACantidad[x] = retorno[x];
+                    }
+
+                    retorno = auxACantidad;
+                    retorno[retorno.length - 1] = new AnioCantidad(param[i].getAnio(), 1);
                 }
             }
-
         }
         return retorno;
     }
@@ -125,30 +149,47 @@ public class ClientesAutomoviles {
     private static TipoValuacion[] valuacionesPorTipo(Automovil[] param) {
         int j;
         boolean pusheado;
-        TipoValuacion[] retorno1 = new TipoValuacion[param.length];
+        TipoValuacion[] retorno = new TipoValuacion[0];
 
         for (int i = 0; i < param.length; i++) {
             pusheado = false;
             if (i == 0) {
-                retorno1[i] = new TipoValuacion(param[i].getTipo().getDescripcion(), param[i].getValuacion());
+
+                TipoValuacion[] auxTipoValuacion = new TipoValuacion[retorno.length + 1];
+
+                for (int x = 0; x < retorno.length; x++) {
+                    auxTipoValuacion[x] = retorno[x];
+                }
+                retorno = auxTipoValuacion;
+                retorno[retorno.length - 1] = new TipoValuacion(param[i].getTipo().getDescripcion(),
+                        param[i].getValuacion());
             } else {
                 j = 0;
 
                 do {
-                    if (retorno1[j].getTipo() == param[i].getTipo().getDescripcion()) {
-                        retorno1[j].setSumaValuacion(retorno1[j].getSumaValuacion().add(param[i].getValuacion()));
+                    if (retorno[j].getTipo() == param[i].getTipo().getDescripcion()) {
+                        retorno[j].setSumaValuacion(retorno[j].getSumaValuacion().add(param[i].getValuacion()));
                         pusheado = true;
                     }
 
                     j++;
 
-                } while (retorno1[j] != null && !pusheado);
-                if (retorno1[j] == null && !pusheado) {
-                    retorno1[j] = new TipoValuacion(param[i].getTipo().getDescripcion(), param[i].getValuacion());
+                } while (j < retorno.length && !pusheado);
+                if (j == retorno.length && !pusheado) {
+
+                    TipoValuacion[] auxTipoValuacion = new TipoValuacion[retorno.length + 1];
+
+                    for (int x = 0; x < retorno.length; x++) {
+                        auxTipoValuacion[x] = retorno[x];
+                    }
+
+                    retorno = auxTipoValuacion;
+                    retorno[retorno.length - 1] = new TipoValuacion(param[i].getTipo().getDescripcion(),
+                            param[i].getValuacion());
+
                 }
             }
-
         }
-        return retorno1;
+        return retorno;
     }
 }

@@ -40,18 +40,24 @@ public class ClienteAeropuerto {
 
     private static void imprimir(Vuelo[] vuelosArray) {
         for (int i = 0; i < vuelosArray.length; i++) {
-            if (vuelosArray[i] != null) {
-                System.out.println(vuelosArray[i].toString());
-            }
+            System.out.println(vuelosArray[i].toString());
         }
     }
 
     private static Vuelo[] arribos(Vuelo[] vuelosArray) {
+        Vuelo[] haciaConcordia = new Vuelo[0];
 
-        Vuelo[] haciaConcordia = new Vuelo[vuelosArray.length];
         for (int i = 0; i < vuelosArray.length; i++) {
             if (vuelosArray[i].getCiudadDestino().getNombre().compareTo("Concordia") == 0) {
-                haciaConcordia[i] = vuelosArray[i];
+
+                Vuelo[] auxVuelos = new Vuelo[haciaConcordia.length + 1];
+
+                for (int j = 0; j < haciaConcordia.length; j++) {
+                    auxVuelos[j] = haciaConcordia[j];
+                }
+
+                haciaConcordia = auxVuelos;
+                haciaConcordia[haciaConcordia.length - 1] = vuelosArray[i];
             }
         }
         return haciaConcordia;
@@ -59,11 +65,18 @@ public class ClienteAeropuerto {
     }
 
     private static Vuelo[] partidas(Vuelo[] vuelosArray) {
+        Vuelo[] desdeConcordia = new Vuelo[0];
 
-        Vuelo[] desdeConcordia = new Vuelo[vuelosArray.length];
         for (int i = 0; i < vuelosArray.length; i++) {
             if (vuelosArray[i].getCiudadOrigen().getNombre().compareTo("Concordia") == 0) {
-                desdeConcordia[i] = vuelosArray[i];
+                Vuelo[] auxVuelos = new Vuelo[desdeConcordia.length + 1];
+
+                for (int j = 0; j < desdeConcordia.length; j++) {
+                    auxVuelos[j] = desdeConcordia[j];
+                }
+
+                desdeConcordia = auxVuelos;
+                desdeConcordia[desdeConcordia.length - 1] = vuelosArray[i];
             }
         }
         return desdeConcordia;
