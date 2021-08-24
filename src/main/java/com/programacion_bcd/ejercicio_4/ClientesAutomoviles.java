@@ -39,12 +39,7 @@ public class ClientesAutomoviles {
         AnioCantidad[] retorno = cantidadPorAnio(param);
 
         for (int i = 0; i < retorno.length; i++) {
-            if (retorno[i] != null) {
-                System.out.println(retorno[i].toString());
-
-            } else {
-                break;
-            }
+            System.out.println(retorno[i].toString());
         }
         System.out.println("");
 
@@ -75,10 +70,8 @@ public class ClientesAutomoviles {
                 for (int j = 0; j < retorno.length; j++) {
                     auxAutomovil[j] = retorno[j];
                 }
-
                 retorno = auxAutomovil;
                 retorno[retorno.length - 1] = param[i];
-
             }
         }
         return retorno;
